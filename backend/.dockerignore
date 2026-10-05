@@ -1,0 +1,6 @@
+target/
+*.log
+*.md
+.git
+.gitignore
+# Le dossier .m2 est inclus volontairement (cache Maven offline)

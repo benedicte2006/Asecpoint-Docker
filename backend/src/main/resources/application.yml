@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: asecna-pointage
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://mysql:3306/asecna_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:asecna_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:asecna_pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+app:
+  base-url: ${APP_BASE_URL:http://localhost}
+jwt:
+  secret: ${JWT_SECRET:asecnaSuperSecretKeyForJwtAuthenticationMustBeAtLeast256BitsLong}
+  expiration-ms: 86400000 # 24 heures
+qr-session:
+  ttl-seconds: 190 # Validité d'un QR code en secondes (3 minutes et 10 secondes)
